@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>AlgoPaint – Gradient</title>
+    <link rel="stylesheet" type="text/css" href="ui.css" />
+
+    <link href="https://fonts.cdnfonts.com/css/satoshi" rel="stylesheet">
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/satoshi');
+    </style>
+</head>
+
+<body>
+
+    <main id="tool-layout">
+        <div id="gui-left">
+
+            <div class="ui-component">
+                <label class="uiSectionHdl">Gradient</label>
+            </div>
+
+            <div class="ui-component ui-row">
+                <div class="color-col">
+                    <label>Color A</label>
+                    <input type="color" id="colorA" value="#ff6600">
+                </div>
+                <div class="color-col">
+                    <label>Color B</label>
+                    <input type="color" id="colorB" value="#0044ff">
+                </div>
+            </div>
+
+            <div class="ui-component">
+                <label>Type</label>
+                <select id="gradType">
+                    <option value="linear">Linear</option>
+                    <option value="radial">Radial</option>
+                    <option value="reflected">Reflected</option>
+                    <option value="angular">Angular</option>
+                    <option value="diamond">Diamond</option>
+                </select>
+            </div>
+
+            <br><br><br>
+
+            <div class="ui-component">
+                <label class="uiSectionHdl">Brush</label>
+            </div>
+
+            <div class="ui-component">
+                <label>Width</label>
+                <input type="range" id="brushWidth" min="20" max="1000" value="100" step="10"
+                    oninput="this.nextElementSibling.value = this.value">
+                <output>100</output>
+            </div>
+
+            <div class="ui-component">
+                <label>Height</label>
+                <input type="range" id="brushHeight" min="20" max="1000" value="20" step="10"
+                    oninput="this.nextElementSibling.value = this.value">
+                <output>20</output>
+            </div>
+
+            <div class="ui-component">
+                <label>Size</label>
+                <input type="range" id="brushSize" min="0.1" max="2.0" value="1.0" step="0.1"
+                    oninput="this.nextElementSibling.value = this.value">
+                <output>1.0</output>
+            </div>
+
+            <div class="ui-component">
+                <hr class="hrSub">
+            </div>
+
+            <div class="ui-component">
+                <label>Rotation sensitivity</label>
+                <input type="range" id="brushMov" min="80" max="320" value="200" step="20"
+                    oninput="this.nextElementSibling.value = this.value">
+                <output>200</output>
+            </div>
+
+            <br>
+
+            <div class="ui-component">
+                <label id="fixedAngleLabel">Fixed angle</label>
+                <input type="checkbox" id="fixedAngle">
+            </div>
+
+            <br>
+
+            <div class="ui-component">
+                <label>Brush Angle</label>
+                <input type="range" id="brushRot" min="-180" max="180" value="-45" step="1"
+                    oninput="this.nextElementSibling.value = this.value">
+                <output>-45</output>
+            </div>
+
+            <br><br><br>
+
+            <div class="ui-component">
+                <label class="uiSectionHdl">Grid</label>
+            </div>
+
+            <div class="ui-component">
+                <label>Columns</label>
+                <input type="range" id="gridRows" min="1" max="70" value="1" step="1"
+                    oninput="this.nextElementSibling.value = this.value">
+                <output>1</output>
+            </div>
+
+            <div class="ui-component">
+                <label>Rows</label>
+                <input type="range" id="gridCols" min="1" max="70" value="1" step="1"
+                    oninput="this.nextElementSibling.value = this.value">
+                <output>1</output>
+            </div>
+
+            <br><br><br>
+
+            <div class="ui-component">
+                <div id="keyInfo">
+                     To undo an action, <br>press the "Z" key.
+                </div>
+            </div>
+
+            <div class="ui-component">
+                <button id="resetCanvas" class="resetCanvas">Clear canvas</button>
+            </div>
+
+            <div class="ui-component">
+                <button id="saveImg" onclick="saveImage()">Save PNG</button>
+            </div>
+
+            <div class="ui-component">
+                <div class="info">
+                    AlgoPaint – Gradient v01
+                    <br>
+                    made by <a href="https://kostrzeva.com" target="_blank" class="link">Tomas Kostrzeva</a>.
+                    <br><br>
+                    Support me with <a href="https://buymeacoffee.com/tomaskostrzeva" class="link">Buy me a coffee</a>.
+                </div>
+            </div>
+
+        </div>
+
+        <button id="sidebar-toggle" onclick="toggleSidebar()">&#8249;</button>
+
+        <div id="artboard">
+            <div id="sketch-wrapper"></div>
+        </div>
+
+    </main>
+
+    <script src="https://www.unpkg.com/p5@1.9.4/lib/p5.min.js"></script>
+    <script src="main.js"></script>
+</body>
